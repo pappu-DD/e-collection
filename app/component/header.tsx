@@ -30,7 +30,7 @@ export default function Header() {
       <button className="md:hidden mr-3">
         <TiThMenuOutline />
       </button>
-      <div>
+      <div className=" hidden md:flex">
         <Button className=" bg-green-600">
           <Link href={"/controlEvent"} className="p-2 text-white font-bold">
             Control Event

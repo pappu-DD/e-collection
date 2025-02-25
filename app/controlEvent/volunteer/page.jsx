@@ -16,7 +16,7 @@ export default function Volunteer() {
       </div>
 
       <div className="m-4">
-        <div className="border-2 border-blue-700 m-4 flex items-center gap-4 rounded-xl bg-green-100">
+        <div className="border-2 border-blue-700 md:m-4 m-1 flex items-center gap-4 rounded-xl bg-green-100">
           <div className="m-2 rounded-full border-4 border-green-500">
             <img
               src="member-img.png"
@@ -39,7 +39,30 @@ export default function Volunteer() {
             <MdDeleteForever />
           </Button>
         </div>
-        <div className="border-2 border-blue-700 m-4 flex items-center gap-4 rounded-xl bg-green-100">
+        <div className="border-2 border-blue-700 md:m-4 m-1 flex items-center gap-4 rounded-xl bg-green-100">
+          <div className="m-2 rounded-full border-4 border-green-500">
+            <img
+              src="member-img.png"
+              width={80}
+              className="rounded-full p-1"
+              alt="member img"
+            />
+          </div>
+          <div>
+            <h1 className="font-semibold text-lg">Salman khan</h1>
+            <p>POST : HOD</p>
+            <p>
+              ststus :{" "}
+              <span className="text-green-800 font-semibold">Online</span>
+            </p>
+          </div>
+
+          <Button variant="destructive">
+            Remove
+            <MdDeleteForever />
+          </Button>
+        </div>
+        <div className="border-2 border-blue-700 md:m-4  m-1 flex items-center gap-4 rounded-xl bg-green-100">
           <div className="m-2 rounded-full border-4 border-green-500">
             <img
               src="member-img.png"
@@ -63,31 +86,8 @@ export default function Volunteer() {
           </Button>
         </div>
 
-        <div className="border-2 border-blue-700 m-4 flex items-center gap-4 rounded-xl bg-green-100">
-          <div className="m-2 rounded-full border-4 border-green-500">
-            <img
-              src="member-img.png"
-              width={80}
-              className="rounded-full p-1"
-              alt="member img"
-            />
-          </div>
-          <div>
-            <h1 className="font-semibold text-lg">Salman khan</h1>
-            <p>POST : HOD</p>
-            <p>
-              ststus :{" "}
-              <span className="text-green-800 font-semibold">Online</span>
-            </p>
-          </div>
 
-          <Button variant="destructive">
-            Remove
-            <MdDeleteForever />
-          </Button>
-        </div>
-
-        <div className="border-2 border-blue-700 m-4 flex items-center gap-4 rounded-xl bg-red-300">
+        <div className="border-2 border-blue-700 md:m-4 m-1 flex items-center gap-4 rounded-xl bg-red-300">
           <div className="m-2 rounded-full border-4 border-gray-500">
             <img
               src="member-img.png"
