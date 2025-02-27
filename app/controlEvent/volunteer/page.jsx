@@ -26,15 +26,15 @@ export default function Volunteer() {
             />
           </div>
           <div>
-            <h1 className="font-semibold text-lg">Salman khan</h1>
-            <p>POST : HOD</p>
-            <p>
+            <h1 className="font-extrabold sm:text-lg ">Salman khan</h1>
+            <p className="text-sm md:text-lg">POST : HOD</p>
+            <p  className="text-sm md:text-lg">
               ststus :{" "}
               <span className="text-green-800 font-semibold">Online</span>
             </p>
           </div>
 
-          <Button variant="destructive">
+          <Button variant="destructive" className="p-1 md:p-2">
             Remove
             <MdDeleteForever />
           </Button>
@@ -49,21 +49,21 @@ export default function Volunteer() {
             />
           </div>
           <div>
-            <h1 className="font-semibold text-lg">Salman khan</h1>
-            <p>POST : HOD</p>
-            <p>
+            <h1 className="font-extrabold sm:text-lg ">Salman khan</h1>
+            <p className="text-sm md:text-lg">POST : HOD</p>
+            <p  className="text-sm md:text-lg">
               ststus :{" "}
               <span className="text-green-800 font-semibold">Online</span>
             </p>
           </div>
 
-          <Button variant="destructive">
+          <Button variant="destructive" className="p-1 md:p-2">
             Remove
             <MdDeleteForever />
           </Button>
         </div>
-        <div className="border-2 border-blue-700 md:m-4  m-1 flex items-center gap-4 rounded-xl bg-green-100">
-          <div className="m-2 rounded-full border-4 border-green-500">
+        <div className="border-2 border-blue-700 md:m-4 m-1 flex items-center gap-4 rounded-xl bg-green-100">
+          <div className="m-2 rounded-full border-4 border-red-300">
             <img
               src="member-img.png"
               width={80}
@@ -72,44 +72,22 @@ export default function Volunteer() {
             />
           </div>
           <div>
-            <h1 className="font-semibold text-lg">Salman khan</h1>
-            <p>POST : HOD</p>
-            <p>
+            <h1 className="font-extrabold sm:text-lg ">Salman khan</h1>
+            <p className="text-sm md:text-lg">POST : HOD</p>
+            <p  className="text-sm md:text-lg">
               ststus :{" "}
-              <span className="text-green-800 font-semibold">Online</span>
+              <span className="text-red-300 font-semibold">Offline</span>
             </p>
           </div>
 
-          <Button variant="destructive">
+          <Button variant="destructive" className="p-1 md:p-2">
             Remove
             <MdDeleteForever />
           </Button>
         </div>
+      
 
-
-        <div className="border-2 border-blue-700 md:m-4 m-1 flex items-center gap-4 rounded-xl bg-red-300">
-          <div className="m-2 rounded-full border-4 border-gray-500">
-            <img
-              src="member-img.png"
-              width={80}
-              className="rounded-full p-1"
-              alt="member img"
-            />
-          </div>
-          <div>
-            <h1 className="font-semibold text-lg">Salman khan</h1>
-            <p>POST : HOD</p>
-            <p>
-              ststus :{" "}
-              <span className="text-gray-500 font-semibold">Offline</span>
-            </p>
-          </div>
-
-          <Button variant="destructive">
-            Remove
-            <MdDeleteForever />
-          </Button>
-        </div>
+       
       </div>
     </div>
   );
