@@ -26,5 +26,6 @@ export default function controlEvent() {
         </TabsContent>
       </Tabs>
     </div>
+
   );
 }

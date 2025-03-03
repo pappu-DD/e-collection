@@ -57,14 +57,21 @@ export default function AddMembers() {
               placeholder="Enter name"
               onChange={(e) => handleInputChange(e.target.name, e.target.value)}
             />
+            <Label htmlFor="email">Email</Label>
+            <Input
+              name="email"
+              type="email"
+              placeholder="Enter name"
+              onChange={(e) => handleInputChange(e.target.name, e.target.value)}
+            />
 
             {/* Picture Input */}
-            <Label htmlFor="picture">Picture</Label>
+            {/* <Label htmlFor="picture">Picture</Label>
             <Input
               id="picture"
               type="file"
               onChange={(e) => handleInputChange("picture", e.target.files[0])}
-            />
+            /> */}
 
             {/* ID Input */}
             <Label htmlFor="id">ID</Label>

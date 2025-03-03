@@ -1,19 +1,20 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Toggle } from "@radix-ui/react-toggle";
 import Link from "next/link";
 import { useState } from "react";
 import { TiThMenuOutline } from "react-icons/ti";
-import { X } from "lucide-react"; // Close icon for mobile menu
+import { X } from "lucide-react";
+import { UserButton, useUser } from "@clerk/nextjs";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const { isSignedIn, isLoaded } = useUser(); // Get authentication state
 
   return (
     <nav className="bg-amber-600 p-3">
       <div className="flex justify-between items-center">
         {/* Logo */}
-        <h1 className="text-2xl font-extrabold">E-Collection</h1>
+        <h1 className="text-2xl font-extrabold text-white">E-Collection</h1>
 
         {/* Desktop Menu (Hidden on mobile) */}
         <ul className="hidden md:flex space-x-4">
@@ -38,7 +39,17 @@ export default function Header() {
               Control Event
             </Link>
           </Button>
-          <Button>Login</Button>
+
+          {/* Conditional Login/User Button */}
+          {!isLoaded ? null : isSignedIn ? (
+            <UserButton />
+          ) : (
+            <Button>
+              <Link href="/sign-in" className="text-white font-bold">
+                Login
+              </Link>
+            </Button>
+          )}
         </div>
 
         {/* Mobile Menu Button */}
@@ -51,25 +62,55 @@ export default function Header() {
       {isOpen && (
         <div className="absolute top-16 left-0 w-full bg-amber-700 md:hidden">
           <ul className="flex flex-col items-center py-4 space-y-4">
-            <Link href="/event-dashboard" className="text-white font-bold" onClick={() => setIsOpen(false)}>
+            <Link
+              href="/event-dashboard"
+              className="text-white font-bold"
+              onClick={() => setIsOpen(false)}
+            >
               Event Dashboard
             </Link>
-            <Link href="/home" className="text-white font-bold" onClick={() => setIsOpen(false)}>
+            <Link
+              href="/home"
+              className="text-white font-bold"
+              onClick={() => setIsOpen(false)}
+            >
               Home
             </Link>
-            <Link href="/fund-collection" className="text-white font-bold" onClick={() => setIsOpen(false)}>
+            <Link
+              href="/fund-collection"
+              className="text-white font-bold"
+              onClick={() => setIsOpen(false)}
+            >
               Fund Collection
             </Link>
-            <Link href="/task-management" className="text-white font-bold" onClick={() => setIsOpen(false)}>
+            <Link
+              href="/task-management"
+              className="text-white font-bold"
+              onClick={() => setIsOpen(false)}
+            >
               Task Management
             </Link>
+
             {/* Buttons inside Mobile Menu */}
-            <Button className="bg-green-600 w-full" onClick={() => setIsOpen(false)}>
+            <Button
+              className="bg-green-600 w-full"
+              onClick={() => setIsOpen(false)}
+            >
               <Link href="/controlEvent" className="p-2 text-white font-bold">
                 Control Event
               </Link>
             </Button>
-            <Button className="w-full">Login</Button>
+
+            {/* Conditional Login/User Button */}
+            {!isLoaded ? null : isSignedIn ? (
+              <UserButton />
+            ) : (
+              <Button onClick={() => setIsOpen(false)}>
+                <Link href="/sign-in" className="text-white font-bold">
+                  Login
+                </Link>
+              </Button>
+            )}
           </ul>
         </div>
       )}
