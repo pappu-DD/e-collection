@@ -5,7 +5,7 @@ import FundCollection from "../fund-collection/page";
 
 export default function Dashboard() {
   return (
-    <div className="border-2 border-emerald-500 m-3 p-10">
+    <div className="border-2 border-emerald-500 m-3 p-20">
       <div>
         <FundCollection/>
       </div>
