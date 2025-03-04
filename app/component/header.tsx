@@ -92,24 +92,22 @@ export default function Header() {
             </Link>
 
             {/* Buttons inside Mobile Menu */}
-            <Button
-              className="bg-green-600 w-full"
-              onClick={() => setIsOpen(false)}
-            >
-              <Link href="/controlEvent" className="p-2 text-white font-bold">
+            <Link href="/controlEvent" className="p-2 text-white font-bold">
+              <Button
+                className="bg-green-600 w-full"
+                onClick={() => setIsOpen(false)}
+              >
                 Control Event
-              </Link>
-            </Button>
+              </Button>
+            </Link>
 
             {/* Conditional Login/User Button */}
             {!isLoaded ? null : isSignedIn ? (
               <UserButton />
             ) : (
-              <Button onClick={() => setIsOpen(false)}>
-                <Link href="/sign-in" className="text-white font-bold">
-                  Login
-                </Link>
-              </Button>
+              <Link href="/sign-in" className="text-white font-bold">
+                <Button onClick={() => setIsOpen(false)}>Login</Button>
+              </Link>
             )}
           </ul>
         </div>
