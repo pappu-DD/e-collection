@@ -18,11 +18,11 @@ export default function Header() {
 
         {/* Desktop Menu (Hidden on mobile) */}
         <ul className="hidden md:flex space-x-4">
-          <Link href="/event-dashboard" className="p-2 text-white font-bold">
-            Event Dashboard
-          </Link>
           <Link href="/home" className="p-2 text-white font-bold">
             Home
+          </Link>
+          <Link href="/event-dashboard" className="p-2 text-white font-bold">
+            Event Dashboard
           </Link>
           <Link href="/fund-collection" className="p-2 text-white font-bold">
             Fund Collection
