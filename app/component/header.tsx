@@ -14,7 +14,7 @@ export default function Header() {
     <nav className="bg-amber-600 p-3">
       <div className="flex justify-between items-center">
         {/* Logo */}
-        <h1 className="text-2xl font-extrabold text-white">E-Collection</h1>
+        <h1 className="text-2xl font-extrabold text-white">E-Coooollection</h1>
 
         {/* Desktop Menu (Hidden on mobile) */}
         <ul className="hidden md:flex space-x-4">
