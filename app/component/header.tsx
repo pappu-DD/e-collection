@@ -18,7 +18,7 @@ export default function Header() {
 
         {/* Desktop Menu (Hidden on mobile) */}
         <ul className="hidden md:flex space-x-4">
-          <Link href="/home" className="p-2 text-white font-bold">
+          <Link href="/" className="p-2 text-white font-bold">
             Home
           </Link>
           <Link href="/event-dashboard" className="p-2 text-white font-bold">

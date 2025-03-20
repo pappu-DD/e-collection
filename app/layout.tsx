@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./component/header";
-import Footer from "./component/footer";
-import LocationTrack from "./component/locationTrack";
-import Team from "./component/team";
+
 
 import { ClerkProvider } from "@clerk/nextjs";
 
@@ -36,9 +34,6 @@ export default function RootLayout({
         >
           <Header />
           {children}
-          <LocationTrack />
-          <Team />
-          <Footer />
         </body>
       </html>
     </ClerkProvider>

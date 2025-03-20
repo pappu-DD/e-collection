@@ -1,16 +1,20 @@
+import type { Metadata } from "next";
+import Dashboard from "./event-dashboard/page";
+import Footer from "./component/footer";
+import LocationTrack from "./component/locationTrack";
+import Team from "./component/team";
 
-import type { Metadata } from 'next'
-import Dashboard from './event-dashboard/page';
- 
 export const metadata: Metadata = {
-  title: 'E-collection',
-  description: 'Make a great event and controls',
-}
+  title: "E-collection",
+  description: "Make a great event and controls",
+};
 export default function Home() {
-
   return (
     <div>
-      <Dashboard/>
+      <Dashboard />
+      <LocationTrack />
+      <Team />
+      <Footer />
     </div>
   );
 }
