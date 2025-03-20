@@ -27,8 +27,15 @@ export default function Team() {
             <h1 className="text-white">Fullstack Developer</h1>
             <h2 className="text-white">(BC/22/012)</h2>
             <div className="flex flex-row gap-3 m-3">
-              <TiSocialLinkedin className="text-2xl text-orange-600" />
-              <TiSocialInstagram className="text-2xl text-orange-600" />
+            <a href="https://www.linkedin.com/in/madhav-kumar-8010b9172/" target="_blank">
+                <TiSocialLinkedin className="text-2xl text-orange-600" />
+              </a>
+              <a
+                href="not-found"
+                target="_blank"
+              >
+                <TiSocialInstagram className="text-2xl text-orange-600" />
+              </a>
             </div>
           </div>
           <div className="flex flex-col justify-center items-center rounded-lg py-8 px-16 md:p-10 m-2 bg-slate-700 shadow-xl">
@@ -44,8 +51,15 @@ export default function Team() {
             <h1 className="text-white">Fullstack Developer</h1>
             <h2 className="text-white">(BC/22/012)</h2>
             <div className="flex flex-row gap-3 m-3">
-              <TiSocialLinkedin className="text-2xl text-orange-600" />
-              <TiSocialInstagram className="text-2xl text-orange-600" />
+            <a href="https://www.linkedin.com/in/pappu-kumar-ba5103302/" target="_blank">
+                <TiSocialLinkedin className="text-2xl text-orange-600" />
+              </a>
+              <a
+                href="https://www.instagram.com/zzara_india_wala/"
+                target="_blank"
+              >
+                <TiSocialInstagram className="text-2xl text-orange-600" />
+              </a>
             </div>
           </div>
           <div className="flex flex-col justify-center items-center rounded-lg py-8 px-16 md:p-10 m-2 bg-slate-700 shadow-xl">
@@ -61,8 +75,39 @@ export default function Team() {
             <h1 className="text-white">Designer</h1>
             <h2 className="text-white">(BC/22/038)</h2>
             <div className="flex flex-row gap-3 m-3">
-              <TiSocialLinkedin className="text-2xl text-orange-600" />
-              <TiSocialInstagram className="text-2xl text-orange-600" />
+              <a href="not-found"  target="_blank">
+                <TiSocialLinkedin className="text-2xl text-orange-600" />
+              </a>
+              <a
+                href="https://www.instagram.com/yadavboyrajeshroy/"
+                target="_blank"
+              >
+                <TiSocialInstagram className="text-2xl text-orange-600" />
+              </a>
+            </div>
+          </div>
+          <div className="flex flex-col justify-center items-center rounded-lg py-8 px-16 md:p-10 m-2 bg-slate-700 shadow-xl">
+            <img
+              src="yash.jpg"
+              alt="image"
+              width={200}
+              className="rounded-full"
+            />
+            <h1 className="text-2xl font-bold p-2 text-green-600">
+              Yash Roy
+            </h1>
+            <h1 className="text-white">Database</h1>
+            <h2 className="text-white">(BC/22/085)</h2>
+            <div className="flex flex-row gap-3 m-3">
+              <a href="https://www.linkedin.com/in/yash-roy-88620229a/"  target="_blank">
+                <TiSocialLinkedin className="text-2xl text-orange-600" />
+              </a>
+              <a
+                href="https://www.instagram.com/yash_brahmbhattt/"
+                target="blank"
+              >
+                <TiSocialInstagram className="text-2xl text-orange-600" />
+              </a>
             </div>
           </div>
         </div>
