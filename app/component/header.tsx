@@ -34,11 +34,13 @@ export default function Header() {
 
         {/* Buttons (Desktop Only) */}
         <div className="hidden md:flex space-x-4">
+
           <Button className="bg-green-600">
             <Link href="/controlEvent" className="p-2 text-white font-bold">
               Control Event
             </Link>
           </Button>
+        
 
           {/* Conditional Login/User Button */}
           {!isLoaded ? null : isSignedIn ? (
