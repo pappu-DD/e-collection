@@ -35,6 +35,7 @@ export default function Footer() {
       if (response.ok) {
         alert("Message submitted successfully!");
         setFormData({});
+        e.target.reset();
       } else {
         alert(`Error: ${result.error}`);
       }
