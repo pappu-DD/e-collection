@@ -49,7 +49,12 @@ export default function Footer() {
     <div className="bg-yellow-200 m-3 mb-0">
       <div className="md:flex justify-between m-3 ">
         <div className="p-4 m-1 flex flex-col justify-center items-center">
-          <img src="logo.jpg" width={150} alt="logo" className="rounded-full" />
+          <img
+            src="logo.jpg"
+            width={150}
+            alt="logo"
+            className="rounded-full"
+          />
           <h1 className="font-extrabold text-2xl">EVENTIFY</h1>
           <h1>Social links</h1>
           <div className="flex justify-center gap-2">
@@ -99,7 +104,9 @@ export default function Footer() {
               type="email"
               required
               placeholder="Email *"
-              onChange={(e) => handleInputChange(e.target.name, e.target.value)}
+              onChange={(e) =>
+                handleInputChange(e.target.name, e.target.value)
+              }
             />
             <textarea
               className="m-1 w-full h-32 p-4 rounded-lg border border-gray-300"
@@ -107,7 +114,9 @@ export default function Footer() {
               name="message"
               type="text"
               placeholder="Message"
-              onChange={(e) => handleInputChange(e.target.name, e.target.value)}
+              onChange={(e) =>
+                handleInputChange(e.target.name, e.target.value)
+              }
             />
             <Button>Submit</Button>
           </form>

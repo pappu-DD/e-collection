@@ -1,39 +1,21 @@
-// app/api/submitMessage/route.ts
-import { db } from "@/configs/db";
-import { userMessage } from "@/configs/schema";
-import { NextResponse } from "next/server";
-import { eq } from "drizzle-orm";  // Import for future queries
+import { db } from "@/configs/db";  // No need for .js extension in Next.js imports
+import { userMessage } from "@/configs/schema";  // Adjust import path accordingly
+import { NextResponse } from "next/server";  // Use Next.js' server response
 
 export async function POST(req: Request) {
   try {
-    const { email, message } = await req.json();
+    const { email, message } = await req.json();  // Parse JSON from the request
 
     if (!email || !message) {
-      return NextResponse.json(
-        { error: "Email and message are required" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Email and message are required." }, { status: 400 });
     }
 
-    // Insert data using Drizzle
-    const result = await db
-      .insert(userMessage)
-      .values({ email, message })
-      .returning();  // Get inserted record
+    // Insert data into the database using your schema
+    await db.insert(userMessage).values({ email, message });
 
-    return NextResponse.json(
-      { 
-        success: true,
-        data: result[0]  // Return the inserted record
-      },
-      { status: 200 }
-    );
-
+    return NextResponse.json({ message: "Message submitted successfully!" });
   } catch (error) {
-    console.error("Database error:", error);
-    return NextResponse.json(
-      { error: "Failed to submit message" },
-      { status: 500 }
-    );
+    console.error("Error inserting data:", error);
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }
