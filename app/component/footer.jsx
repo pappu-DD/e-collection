@@ -1,7 +1,9 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import React, { useState } from "react";
+import { useAuth } from "@clerk/nextjs";
+import { useRouter } from "next/navigation"; // Updated import
+import React, { useState, useEffect } from "react"; // Added useEffect
 import {
   TiSocialFacebookCircular,
   TiSocialGithubCircular,
@@ -11,6 +13,13 @@ import {
 
 export default function Footer() {
   const [formData, setFormData] = useState({});
+  const { isLoaded, userId } = useAuth();
+  const router = useRouter();
+  const [isMounted, setIsMounted] = useState(false); // Track mount state
+
+  useEffect(() => {
+    setIsMounted(true); // Set mounted when component loads
+  }, []);
 
   const handleInputChange = (fieldName, fieldValue) => {
     setFormData((prev) => ({
@@ -23,39 +32,40 @@ export default function Footer() {
     e.preventDefault();
     console.log("form data", formData);
 
-    // send data
-    try {
-      const response = await fetch("/api/submitMessage", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+    if (!isLoaded || !isMounted) return; // Check both auth and mount status
 
-      const result = await response.json();
-      if (response.ok) {
-        alert("Message submitted successfully!");
-        setFormData({});
-        e.target.reset();
-      } else {
-        alert(`Error: ${result.error}`);
+    if (!userId) {
+      router.push("/sign-in"); // Redirect to sign-in if not logged in
+    } else {
+      console.log("User is logged in, submitting the form...");
+
+      try {
+        const response = await fetch("/api/submitMessage", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+          alert("Message submitted successfully!");
+          setFormData({});
+          e.target.reset();
+        } else {
+          alert(`Error: ${result.error}`);
+        }
+      } catch (error) {
+        console.error("Failed to submit message:", error);
+        alert("Failed to submit the message. Please try again later.");
       }
-    } catch (error) {
-      console.error("Failed to submit message:", error);
-      alert("Failed to submit the message. Please try again later.");
     }
   };
-
   // Return the JSX outside of handleSubmit
   return (
     <div className="bg-yellow-200 m-3 mb-0">
       <div className="md:flex justify-between m-3 ">
         <div className="p-4 m-1 flex flex-col justify-center items-center">
-          <img
-            src="logo.jpg"
-            width={150}
-            alt="logo"
-            className="rounded-full"
-          />
+          <img src="logo.jpg" width={150} alt="logo" className="rounded-full" />
           <h1 className="font-extrabold text-2xl">EVENTIFY</h1>
           <h1>Social links</h1>
           <div className="flex justify-center gap-2">
@@ -105,9 +115,7 @@ export default function Footer() {
               type="email"
               required
               placeholder="Email *"
-              onChange={(e) =>
-                handleInputChange(e.target.name, e.target.value)
-              }
+              onChange={(e) => handleInputChange(e.target.name, e.target.value)}
             />
             <textarea
               className="m-1 w-full h-32 p-4 rounded-lg border border-gray-300"
@@ -115,9 +123,7 @@ export default function Footer() {
               name="message"
               type="text"
               placeholder="Message"
-              onChange={(e) =>
-                handleInputChange(e.target.name, e.target.value)
-              }
+              onChange={(e) => handleInputChange(e.target.name, e.target.value)}
             />
             <Button>Submit</Button>
           </form>
