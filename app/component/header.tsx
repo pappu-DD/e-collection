@@ -14,7 +14,11 @@ export default function Header() {
     <nav className="bg-amber-600 p-3">
       <div className="flex justify-between items-center">
         {/* Logo */}
-        <h1 className="text-2xl font-extrabold text-white">Eventify</h1>
+        <h1 className="text-2xl font-extrabold text-white">
+          <Link href="/" className="p-2 text-white font-bold">
+            Eventify
+          </Link>
+        </h1>
 
         {/* Desktop Menu (Hidden on mobile) */}
         <ul className="hidden md:flex space-x-4">
@@ -34,13 +38,11 @@ export default function Header() {
 
         {/* Buttons (Desktop Only) */}
         <div className="hidden md:flex space-x-4">
-
           <Button className="bg-green-600">
             <Link href="/controlEvent" className="p-2 text-white font-bold">
               Control Event
             </Link>
           </Button>
-        
 
           {/* Conditional Login/User Button */}
           {!isLoaded ? null : isSignedIn ? (
@@ -65,18 +67,18 @@ export default function Header() {
         <div className="absolute top-16 left-0 w-full bg-amber-700 md:hidden">
           <ul className="flex flex-col items-center py-4 space-y-4">
             <Link
+              href="/"
+              className="text-white font-bold"
+              onClick={() => setIsOpen(false)}
+            >
+              Home
+            </Link>
+            <Link
               href="/event-dashboard"
               className="text-white font-bold"
               onClick={() => setIsOpen(false)}
             >
               Event Dashboard
-            </Link>
-            <Link
-              href="/home"
-              className="text-white font-bold"
-              onClick={() => setIsOpen(false)}
-            >
-              Home
             </Link>
             <Link
               href="/fund-collection"
