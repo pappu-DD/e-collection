@@ -15,27 +15,41 @@ import {
 import { useRouter } from "next/navigation";
 
 export default function AddMembers() {
-  const router = useRouter(); // Fixed router issue
-
-  // State to store form data
+  const router = useRouter();
   const [formData, setFormData] = useState({});
-
-  // Function to handle input changes
   const handleInputChange = (fieldName, fieldValue) => {
     setFormData((prev) => ({
       ...prev,
       [fieldName]: fieldValue,
     }));
   };
-
-  // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Data:", formData); // Logs all input data in console
-    router.back(); // Navigates back
-  };
+    console.log("Form Data:", formData);
+    
+    try {
+      const response = await fetch("/api/addMember", {  // Removed trailing slash
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(formData)
+      });
 
-  // State to manage dialog visibility
+      const result = await response.json();  // Fixed variable name
+      
+      if (response.ok) {
+        alert("Member submitted successfully!");
+        setFormData({});
+        e.target.reset();
+        router.back();
+      } else {
+        alert(`Error: ${result.error || result.message || "Unknown error"}`);
+      }
+    } catch (error) {
+      console.error("Failed to submit form:", error);
+      alert(`Failed to add the member. Error: ${error.message}`);
+    }
+    router.back();
+  };
   const [showDialog, setShowDialog] = useState(false);
 
   return (
@@ -74,7 +88,7 @@ export default function AddMembers() {
             /> */}
 
             {/* ID Input */}
-            <Label htmlFor="id">ID</Label>
+            <Label htmlFor="id">ID/ROLL</Label>
             <Input
               id="id"
               name="id"
@@ -96,7 +110,7 @@ export default function AddMembers() {
               }}
             >
               <option value="headCoordinator">Event Coordinator</option>
-              <option value="viceCoordinator">Vice Event Coordinator</option>
+              <option value="vice Coordinator">Vice Event Coordinator</option>
               <option value="disciplineHead">Discipline Head</option>
               <option value="mediaHead">Photography & Media Head</option>
               <option value="volunteer">Volunteer</option>

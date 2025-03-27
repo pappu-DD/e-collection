@@ -79,15 +79,11 @@ export default function Volunteer() {
               <span className="text-red-300 font-semibold">Offline</span>
             </p>
           </div>
-
           <Button variant="destructive" className="p-1 md:p-2">
             Remove
             <MdDeleteForever />
           </Button>
         </div>
-      
-
-       
       </div>
     </div>
   );
