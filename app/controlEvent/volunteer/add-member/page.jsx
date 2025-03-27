@@ -40,7 +40,6 @@ export default function AddMembers() {
         alert("Member submitted successfully!");
         setFormData({});
         e.target.reset();
-        router.back();
       } else {
         alert(`Error: ${result.error || result.message || "Unknown error"}`);
       }
