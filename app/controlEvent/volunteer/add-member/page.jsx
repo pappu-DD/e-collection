@@ -108,12 +108,12 @@ export default function AddMembers() {
                 }
               }}
             >
-              <option value="headCoordinator">Event Coordinator</option>
-              <option value="vice Coordinator">Vice Event Coordinator</option>
-              <option value="disciplineHead">Discipline Head</option>
-              <option value="mediaHead">Photography & Media Head</option>
-              <option value="volunteer">Volunteer</option>
-              <option value="other">Other</option>
+              <option value="Head Coordinator">Event Coordinator</option>
+              <option value="Vice Coordinator">Vice Event Coordinator</option>
+              <option value="Discipline Head">Discipline Head</option>
+              <option value="Media Head">Photography & Media Head</option>
+              <option value="Volunteer">Volunteer</option>
+              <option value="Other">Other</option>
             </select>
           </div>
 
