@@ -78,31 +78,30 @@ export default function Footer() {
         <div className="p-4 flex flex-col items-center md:items-start">
           <h1 className="font-semibold">Support</h1>
           <ul className="flex flex-col items-center md:items-start">
-            <li className="hover:text-green-600">
-              <a href="#">Help Center</a>
+          <li className="hover:text-green-600">
+              <a href="/component/blog" >Blogs</a>
             </li>
-            <li className="hover:text-green-600">
-              <a href="#">Contact Us</a>
+          <li className="hover:text-green-600">
+              <a href="/component/pricing" >Pricing</a>
             </li>
-            <li className="hover:text-green-600">
-              <a href="#">Documentation</a>
+          <li className="hover:text-green-600">
+              <a href="/component/contact-us" >Contact Us</a>
             </li>
-            <li className="hover:text-green-600">
-              <a href="#">Privacy & Policy</a>
-            </li>
+           
           </ul>
         </div>
         <div className="p-4 m-1 flex flex-col items-center md:items-start">
-          <h1 className="font-semibold">Company</h1>
+          <h1 className="font-semibold">Quick Links</h1>
           <ul className="flex flex-col items-center md:items-start">
             <li className="hover:text-green-600">
-              <a href="#">About</a>
+              <a href="/component/about" target="_blank">About</a>
             </li>
             <li className="hover:text-green-600">
-              <a href="#">Careers</a>
+              <a href="/component/career">Careers</a>
             </li>
+            
             <li className="hover:text-green-600">
-              <a href="#">Blogs</a>
+              <a href="/component/privacy-policy" >Privacy & Policy</a>
             </li>
           </ul>
         </div>
