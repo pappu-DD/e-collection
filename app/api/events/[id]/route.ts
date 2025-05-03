@@ -8,17 +8,16 @@ interface Params {
   id: string;
 }
 
-export async function PUT(request: NextRequest, { params }: { params: Params }) {
+export async function PUT(request: NextRequest, context: { params: { id: string } }) {
   try {
     const { userId } = await auth();
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const { id } = params;
+    const { id } = context.params;
     const body = await request.json();
 
-    // Verify the event belongs to the user
     const [existingEvent] = await db
       .select()
       .from(events)
@@ -56,6 +55,7 @@ export async function PUT(request: NextRequest, { params }: { params: Params }) 
     );
   }
 }
+
 
 export async function DELETE(request: NextRequest, { params }: { params: Params }) {
   try {
