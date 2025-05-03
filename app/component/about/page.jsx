@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function About() {
+const About = () => {
+  <title>About Us - Eventify</title>
   return (
-    <div>
-      <div className="bg-gradient-to-r from-orange-500 to-yellow-600 min-h-screen py-10 px-6 md:px-16 lg:px-32 flex items-center justify-center">
+    <div className="bg-gradient-to-r from-sky-200 to-sky-600 min-h-screen py-10 px-6 md:px-16 lg:px-32 flex items-center justify-center">
       <div className="max-w-5xl bg-white p-10 shadow-2xl rounded-3xl text-center">
         <h1 className="text-5xl font-extrabold text-blue-700 mb-6 uppercase tracking-wide">
           Welcome to Eventify
@@ -49,12 +49,13 @@ export default function About() {
             Join us today and take your event management to the next level!
           </p>
           <a
-            href="https://eventify.app"
+            href="/"
             className="inline-block px-8 py-3 text-white font-bold tracking-wide bg-blue-500 rounded-lg shadow-md hover:bg-blue-600"
-          ></a>
+          >home page</a>
         </div>
       </div>
     </div>
-    </div>
-  )
-}
+  );
+};
+
+export default About;
