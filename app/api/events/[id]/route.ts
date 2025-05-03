@@ -4,25 +4,24 @@ import { NextResponse, NextRequest } from "next/server";
 import { eq } from "drizzle-orm";
 import { auth } from "@clerk/nextjs/server";
 
-interface Params {
-  id: string;
-}
-
-export async function PUT(request: NextRequest, context: { params: { id: string } }) {
+export async function PUT(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
   try {
     const { userId } = await auth();
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const { id } = context.params;
+    const { id } = params;
     const body = await request.json();
 
+    // Verify the event belongs to the user
     const [existingEvent] = await db
       .select()
       .from(events)
-      .where(eq(events.id, Number(id)))
-      .limit(1);
+      .where(eq(events.id, Number(id)));
 
     if (!existingEvent) {
       return NextResponse.json({ error: "Event not found" }, { status: 404 });
@@ -56,8 +55,10 @@ export async function PUT(request: NextRequest, context: { params: { id: string 
   }
 }
 
-
-export async function DELETE(request: NextRequest, { params }: { params: Params }) {
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
   try {
     const { userId } = await auth();
     if (!userId) {
@@ -70,8 +71,7 @@ export async function DELETE(request: NextRequest, { params }: { params: Params 
     const [existingEvent] = await db
       .select()
       .from(events)
-      .where(eq(events.id, Number(id)))
-      .limit(1);
+      .where(eq(events.id, Number(id)));
 
     if (!existingEvent) {
       return NextResponse.json({ error: "Event not found" }, { status: 404 });
