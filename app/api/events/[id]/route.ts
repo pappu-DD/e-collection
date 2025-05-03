@@ -3,13 +3,13 @@ import { events } from "@/configs/schema";
 import { NextResponse } from "next/server";
 import { eq } from "drizzle-orm";
 import { auth } from "@clerk/nextjs/server";
+import { NextRequest } from 'next/server';
 
 interface Params {
-  // Changed to interface
   params: { id: string };
 }
 
-export async function PUT(request: Request, { params }: Params) {
+export async function PUT(request: NextRequest, { params }: Params) { // Changed request type
   try {
     const { userId } = await auth();
     if (!userId) {
@@ -59,7 +59,7 @@ export async function PUT(request: Request, { params }: Params) {
   }
 }
 
-export async function DELETE(request: Request, { params }: Params) {
+export async function DELETE(request: NextRequest, { params }: Params) { // Changed request type
   try {
     const { userId } = await auth();
     if (!userId) {
