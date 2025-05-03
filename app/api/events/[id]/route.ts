@@ -3,28 +3,22 @@ import { events } from "@/configs/schema";
 import { NextResponse } from "next/server";
 import { eq } from "drizzle-orm";
 import { auth } from "@clerk/nextjs/server";
-import { NextRequest } from 'next/server';
 
-interface Params {
-  params: { id: string };
-}
-
-export async function PUT(request: NextRequest, { params }: Params) { // Changed request type
+export async function PUT(
+  request: Request,
+  context: { params: { id: string } }
+) {
   try {
     const { userId } = await auth();
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const { id } = params;
+    const { id } = context.params;
     const body = await request.json();
 
-    // Verify the event belongs to the user
     const existingEvent = (
-      await db
-        .select()
-        .from(events)
-        .where(eq(events.id, Number(id)))
+      await db.select().from(events).where(eq(events.id, Number(id)))
     )[0];
 
     if (!existingEvent) {
@@ -59,22 +53,22 @@ export async function PUT(request: NextRequest, { params }: Params) { // Changed
   }
 }
 
-export async function DELETE(request: NextRequest, { params }: Params) { // Changed request type
+export async function DELETE(
+  request: Request,
+  context: { params: { id: string } }
+) {
   try {
     const { userId } = await auth();
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const { id } = params;
+    const { id } = context.params;
 
-    // Verify the event belongs to the user
     const existingEvent = (
-      await db
-        .select()
-        .from(events)
-        .where(eq(events.id, Number(id)))
+      await db.select().from(events).where(eq(events.id, Number(id)))
     )[0];
+
     if (!existingEvent) {
       return NextResponse.json({ error: "Event not found" }, { status: 404 });
     }
