@@ -1,13 +1,15 @@
 import { db } from "@/lib/db";
 import { events } from "@/configs/schema";
-import { NextResponse, NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 import { eq } from "drizzle-orm";
 import { auth } from "@clerk/nextjs/server";
 
-export async function PUT(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+interface Params {
+  // Changed to interface
+  params: { id: string };
+}
+
+export async function PUT(request: Request, { params }: Params) {
   try {
     const { userId } = await auth();
     if (!userId) {
@@ -18,10 +20,12 @@ export async function PUT(
     const body = await request.json();
 
     // Verify the event belongs to the user
-    const [existingEvent] = await db
-      .select()
-      .from(events)
-      .where(eq(events.id, Number(id)));
+    const existingEvent = (
+      await db
+        .select()
+        .from(events)
+        .where(eq(events.id, Number(id)))
+    )[0];
 
     if (!existingEvent) {
       return NextResponse.json({ error: "Event not found" }, { status: 404 });
@@ -31,7 +35,7 @@ export async function PUT(
       return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
     }
 
-    const [updatedEvent] = await db
+    const updatedEvent = await db
       .update(events)
       .set({
         title: body.title,
@@ -45,7 +49,7 @@ export async function PUT(
       .where(eq(events.id, Number(id)))
       .returning();
 
-    return NextResponse.json({ success: true, event: updatedEvent });
+    return NextResponse.json({ success: true, event: updatedEvent[0] });
   } catch (error) {
     console.error("Error updating event:", error);
     return NextResponse.json(
@@ -55,10 +59,7 @@ export async function PUT(
   }
 }
 
-export async function DELETE(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function DELETE(request: Request, { params }: Params) {
   try {
     const { userId } = await auth();
     if (!userId) {
@@ -68,11 +69,12 @@ export async function DELETE(
     const { id } = params;
 
     // Verify the event belongs to the user
-    const [existingEvent] = await db
-      .select()
-      .from(events)
-      .where(eq(events.id, Number(id)));
-
+    const existingEvent = (
+      await db
+        .select()
+        .from(events)
+        .where(eq(events.id, Number(id)))
+    )[0];
     if (!existingEvent) {
       return NextResponse.json({ error: "Event not found" }, { status: 404 });
     }
